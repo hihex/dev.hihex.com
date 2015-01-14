@@ -1,0 +1,44 @@
+{
+  "name": "dev.hihex.com",
+  "version": "0.1.0",
+  "title": "HiHex Developer Site",
+  "description": "好连遥控开发者网站",
+  "homepage": "http://dev.hihex.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hihex/dev.hihex.com"
+  },
+  "bugs": {
+    "url": "https://github.com/hihex/dev.hihex.com/issues"
+  },
+  "spm": {
+    "dependencies": {
+      "alice-box": "1.2.0",
+      "alice-button-dropdown": "1.3.0",
+      "alice-form": "1.1.1",
+      "alice-button": "1.3.0",
+      "alice-list": "1.1.0",
+      "alice-nav": "1.1.0",
+      "alice-paging": "1.1.0",
+      "alice-poptip": "1.3.0",
+      "alice-table": "1.2.0",
+      "alice-tab": "1.1.0",
+      "alice-tipbox": "1.2.0",
+      "alice-tiptext": "1.3.0",
+      "alice-select": "1.1.0",
+      "alice-loading": "1.1.0",
+      "alice-step": "1.1.1"
+    },
+    "devDependencies": {
+      "jquery": "1.7.2",
+      "arale-popup": "1.2.0",
+      "underscore": "1.6.0",
+      "arale-sticky": "1.4.0",
+      "arale-switchable": "1.1.0",
+      "arale-calendar": "1.1.0",
+      "arale-autocomplete": "1.4.1",
+      "arale-tip": "1.3.0",
+      "arale-dialog": "1.4.0"
+    }
+  }
+}
