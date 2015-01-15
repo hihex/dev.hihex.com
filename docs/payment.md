@@ -32,14 +32,14 @@ _**@kennytm Please edit this part**_
 
 | Field              | Type           | Description                       | Default | Example                    |
 |--------------------|----------------|-----------------------------------|---------|----------------------------|
-| **`merchantId`**   | int(11)        | HiHex 提供的 merchantId            | -       | 1001                       |
+| **merchantId**   | int(11)        | HiHex 提供的 merchantId            | -       | 1001                       |
 | merchantOrderNo    | varchar(255)   | 游戏开发方的订单号                   | NULL    | 'UM20150321000000012'      |
 | orderType          | enum           | 订单类型，可选“充值”、“道具”、“会员”等 | NULL    | 'CREDIT','PROP','VIP'      |
-| **`amount`**       | decimal(10,1)  | 订单金额，人民币保留一位小数           | 0.0     | 1.5 或 10.0                |
-| **`subject`**      | varchar(500)   | 购买物品描述                        | NULL    | '激光炮'                    |
+| **amount**       | decimal(10,1)  | 订单金额，人民币保留一位小数           | 0.0     | 1.5 或 10.0                |
+| **subject**      | varchar(500)   | 购买物品描述                        | NULL    | '激光炮'                    |
 | remarks            | varchar(255)   | 购买物品备注                        | NULL    | '使用激光炮可直接摧毁敌方坦克'  |
 | extraData          | text           | 游戏开发者自身需要使用的更多参数，以 JSON 字符串格式传送 | NULL    | {serverId: 1, productName: 'smTank'} |
-| **`signature`**    | varchar(64)    | 除 signature 自身外的所有参数，按本表格顺序排列，最后加上开发者的 signSecret，进行 SHA1 摘要 | NULL    | '0355E7F3AF50A06B31B108C8D5EF8A1'|
+| **signature**    | varchar(64)    | 除 signature 自身外的所有参数，按本表格顺序排列，最后加上开发者的 signSecret，进行 SHA1 摘要 | NULL    | '0355E7F3AF50A06B31B108C8D5EF8A1'|
 
 注： `signature` 进行签名摘要前，需进行 url encode。非必须的参数也要参与签名摘要，值为空。例
 

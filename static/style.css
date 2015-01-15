@@ -6,7 +6,7 @@ body {
 }
 
 a {
-    color: #7CAE23;
+    color: #3F9EB3;
     text-decoration: none;
 }
 
@@ -121,10 +121,6 @@ hr {
     line-height: 60px;
 }
 
-.title-area h1 a {
-    color: #7CAE23;
-}
-
 .title-area h1 a:hover {
     opacity: 0.8;
     text-decoration: none;
@@ -153,10 +149,10 @@ hr {
     height: 60px;
     color: #888;
     margin-bottom: 15px;
-    background: #FBFFD7;
-    border-top: 4px solid #9ACD4B;
+    background: #F6F6F6;
+    border-top: 4px solid #5DADE2;
     text-align: center;
-    border-bottom: 1px solid #FFF0B5;
+    border-bottom: 1px solid #E8E8E8;
 }
 
 .main-nav {
@@ -173,10 +169,6 @@ hr {
     *display: inline;
     *zoom: 1;
     font-weight: bold;
-}
-
-.main-nav a {
-    color: #668430;
 }
 
 .main-nav a:hover {
@@ -251,7 +243,6 @@ hr {
     border-bottom: none;
     position: relative;
     text-shadow: 0 1px 2px #eee;
-    color: #7CAE23;
 }
 
 .side-area a .iconfont {
@@ -287,7 +278,7 @@ hr {
 
 .content-area h2 {
     font-size: 22px;
-    color: #7CAE23;
+    color: #3F9EB3;
     margin-top: 40px;
 }
 
@@ -468,6 +459,9 @@ table {
     padding:0;
     border-collapse: collapse;
 }
+table tbody {
+    font-family: monospace;
+}
 table tr {
     border-top: 1px solid #cccccc;
     background-color: white;
@@ -494,4 +488,6 @@ table tr th :first-child, table tr td :first-child {
 table tr th :last-child, table tr td :last-child {
     margin-bottom: 0;
 }
-
+table strong {
+    color: #000;
+}
