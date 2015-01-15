@@ -21,7 +21,7 @@ HiHex 会提供 `merchantId` 和 `merchantSecret` 给开发者，开发者在调
 
 ## 支付流程
 
-![payment_image](https://s3.amazonaws.com/uploads.hipchat.com/118113/1048529/38VUd54yLq7bOgh/HiHex%20TV%20Game%20Payment%20Workflow%20-%20Page%201.png)
+![payment_image](../static/payment-workflow.png)
 
 ## 支付 SDK
 
