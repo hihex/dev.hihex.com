@@ -17,7 +17,7 @@
 - Email 地址
 - 游戏服务器异步通知 URL 地址
 
-HiHex 会提供 `merchantId` 和 `merchantSecret` 给开发者，开发者在调用 API 时需使用 `merchantSecret` 进行签名。该参数应保密，不可透露给第三方。
+HiHex 会提供 `merchantId` 和 `signSecret` 给开发者，开发者在调用 API 时需使用 `signSecret` 进行签名。该参数应保密，不可透露给第三方。
 
 ## 支付流程
 
