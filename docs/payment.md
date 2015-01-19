@@ -99,7 +99,7 @@ queryString.append(signature);
 
 response 可以是 null，或一个 PaymentOrderResponse instance，栏位如下：
 
-| 类型 | 栏位 | 描述 | 例子 |
+| 类型 | 字段 | 描述 | 例子 |
 |--:|---|---|---|
 | long | **orderId** | HiHex 方的订单号 | 1001 |
 | String | **orderCode** | 游戏开发方的订单号 | "UM20150321000000012" |
