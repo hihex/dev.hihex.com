@@ -78,7 +78,7 @@ void createOrderForLife() {
 | 类型 | 参数 | 描述 | 例子 |
 |--:|---|---|---|
 | long | **merchantId** | HiHex 提供的 merchantId | 1001 |
-| String | **orderCode** | 游戏开发方的订单号 (对应服务器上的 merchantOrderNo) | "UM20150321000000012" |
+| String | **orderCode** | 游戏开发方的订单号 (对应服务器上的 merchantOrderNo) | "SM20150321000000012" |
 | PaymentOrderRequest.Type | **orderType** | 订单类型，可选“充值”、“道具”、“会员”等 | PaymentOrderRequest.Type.kProp |
 | long | **priceRmbCents** | 订单金额，人民币分 (对应服务器上的 amount) | 150 /* = ¥1.50 */ |
 | Non-null String | **subject** | 购买物品描述 | "激光炮" |
@@ -108,7 +108,7 @@ response 可以是 null，或一个 PaymentOrderResponse instance，栏位如下
 | 类型 | 字段 | 描述 | 例子 |
 |--:|---|---|---|
 | long | **orderId** | HiHex 方的订单号 | 1001 |
-| String | **orderCode** | 游戏开发方的订单号 | "UM20150321000000012" |
+| String | **orderCode** | 游戏开发方的订单号 | "SM20150321000000012" |
 | long | **priceRmbCents** | 订单金额，人民币分 | 150 /* = ¥1.50 */ |
 | PaymentOrderResponse.Method | **method** | 支付渠道 | PaymentOrderResponse.Method.kAlipay |
 | Date | **completionDate** | 订单完成时间（已转换成当地时间） | 2015-03-12 12:34:53 |
@@ -123,7 +123,7 @@ response 可以是 null，或一个 PaymentOrderResponse instance，栏位如下
 | Field              | Type           | Description                       | Default | Example                    |
 |--------------------|----------------|-----------------------------------|---------|----------------------------|
 | merchantId         | int(11)        | HiHex 提供的 merchantId            | -       | 1001                       |
-| merchantOrderNo    | varchar(255)   | 游戏开发方的订单号                   | NULL    | 'UM20150321000000012'      |
+| merchantOrderNo    | varchar(255)   | 游戏开发方的订单号                   | NULL    | 'SM20150321000000012'      |
 | orderType          | enum           | 订单类型，可选“充值”、“道具”、“会员”等 | NULL    | 'CREDIT','PROP','VIP'      |
 | amount             | decimal(10,1)  | 订单金额，人民币保留一位小数           | 0.0     | 1.5 或 10.0                |
 | subject            | varchar(500)   | 购买物品描述                        | NULL    | '激光炮'                    |
@@ -131,7 +131,7 @@ response 可以是 null，或一个 PaymentOrderResponse instance，栏位如下
 | extraData          | text           | 游戏开发者自身需要使用的更多参数，以 JSON 字符串格式传送 | NULL    | {'serverId': 1, 'productName': 'smTank'} |
 | orderTime          | timestamp      | 订单发起时间                        | NULL    | '2015-03-12 12:34:53'      |
 | completeTime       | timestamp      | 订单完成时间                        | NULL    | '2015-03-12 12:34:53'      |
-| paymentMethod      | enum           | 支付渠道                           | NULL    | 'UMENG','ALIPAY','WECHAT'  |
+| paymentMethod      | enum           | 支付渠道                           | NULL    | 'SHOUMENG','ALIPAY','WECHAT'  |
 | status             | enum           | 订单状态，“成功”、“失败”、“取消”      | NULL    | 'SUCCESS','FAILED','CANCELED'      |
 | errorMsg           | text           | 订单不成功时的错误信息，JSON 格式      | NULL    | {errorCode:1, errorMessage:"something wrong"}   |
 | signature          | varchar(64)    | 支付请求时提交的 SHA1 摘要 | NULL    | '0355E7F3AF50A06B31B108C8D5EF8A1'|
