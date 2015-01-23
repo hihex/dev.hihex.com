@@ -21,6 +21,8 @@ HiHex 会提供 `merchantId` 和 `signSecret` 给开发者，开发者在调用 
 
 ## 支付流程
 
+图 4.1
+
 ![payment_image](../static/payment-workflow.png)
 
 ## 支付 SDK
@@ -71,6 +73,8 @@ void createOrderForLife() {
 
 `PaymentOrderRequest.buildQueryString` 的参数如下：
 
+表 4.1
+
 | 类型 | 参数 | 描述 | 例子 |
 |--:|---|---|---|
 | long | **merchantId** | HiHex 提供的 merchantId | 1001 |
@@ -99,6 +103,8 @@ queryString.append(signature);
 
 response 可以是 null，或一个 PaymentOrderResponse instance，栏位如下：
 
+表 4.2
+
 | 类型 | 字段 | 描述 | 例子 |
 |--:|---|---|---|
 | long | **orderId** | HiHex 方的订单号 | 1001 |
@@ -111,6 +117,8 @@ response 可以是 null，或一个 PaymentOrderResponse instance，栏位如下
 ## 服务器异步通知
 
 在用户支付成功后，除了 SDK 会即时返回支付结果外，HiHex 还会异步地以主动的方式将相关结果通知给游戏服务器。游戏服务器的异步通知 URL 地址由游戏开发商在 HiHex 注册时提供。通知参数如下
+
+表 4.3
 
 | Field              | Type           | Description                       | Default | Example                    |
 |--------------------|----------------|-----------------------------------|---------|----------------------------|
