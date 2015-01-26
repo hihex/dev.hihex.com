@@ -125,7 +125,7 @@ response 可以是 null，或一个 PaymentOrderResponse instance，栏位如下
 | merchantId         | int(11)        | HiHex 提供的 merchantId            | -       | 1001                       |
 | merchantOrderNo    | varchar(255)   | 游戏开发方的订单号                   | NULL    | 'SM20150321000000012'      |
 | orderType          | enum           | 订单类型，可选“充值”、“道具”、“会员”等 | NULL    | 'CREDIT','PROP','VIP'      |
-| amount             | decimal(10,1)  | 订单金额，人民币保留一位小数           | 0.0     | 1.5 或 10.0                |
+| amount             | decimal(10,2)  | 订单金额，人民币元保留两位小数           | 0.00     | 1.50 或 10.00                |
 | subject            | varchar(500)   | 购买物品描述                        | NULL    | '激光炮'                    |
 | remarks            | varchar(255)   | 购买物品备注                        | NULL    | '使用激光炮可直接摧毁敌方坦克'  |
 | extraData          | text           | 游戏开发者自身需要使用的更多参数，以 JSON 字符串格式传送 | NULL    | {'serverId': 1, 'productName': 'smTank'} |
