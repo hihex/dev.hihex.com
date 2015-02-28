@@ -12,12 +12,17 @@
 ![](https://i.alipayobjects.com/e/201303/2P3fLYiHrA.jpg)
 
 ---
+
 ## SDK环境要求
+
 android系统要求：接入SDK使用要求为Android 4.1（API 15）或更高，使用 x86 或 ARMv7（不支持MIPS）。
+
 IDE要求：Eclipse with ADT 22.3 或更高，Android Studio。
 
 ## SDK接入方法
+
 解压android-sbrc-sdk，将android-sbrc-sdk文件夹中除”doc文件夹”之外的文件夹及文件都拷贝到Android项目里的”libs“文件夹中。
+
 ![libs_image](../static/libs.png)
 
 ## 一个简单的例子
