@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>hexlink card 测试页面</title>
+</head>
+
+<body>
+    this is a hexlink inner card.
+    <br/> update code:63mcx31
+    <br/>
+    <br/> get hexlink-client information
+    <br/> we will provide more information including tv-device future
+    <script type="text/javascript">
+        var uuid = hexlinkInfo.uuid;
+        var screenWidth = hexlinkInfo.screenWidth;
+        var screenHeight = hexlinkInfo.screenHeight;
+        var brand = hexlinkInfo.build.BRAND;
+    </script>
+    <br/>
+    <input type="button" value="get Native uuid" onClick="hexlink.showAndroidToast(uuid)" />
+    <br/>
+    <input type="button" value="get Native width" onClick="hexlink.showAndroidToast(screenWidth)" />
+    <br/>
+    <input type="button" value="get Native brand" onClick="hexlink.showAndroidToast(brand)" />
+    <br/>
+
+    <br/> call native method
+    <br/>
+    <script type="text/javascript">
+        var videoUrl = 'http://pl.youku.com/playlist/m3u8?ts=1425021226&keyframe=0&vid=XNjIyMDc4MTY4&type=mp4&ep=diaWH0mPV8wC4CrYjz8bZivqcXFeXJZ0rGbM%2FKYxBMZAIezQmjjRwQ%3D%3D&sid=44250212259771217856a&token=3606&ctype=12&ev=1&oip=3079203019';
+    </script>
+    <input type="button" value="cast video" onClick="hexlink.castVideo(videoUrl);" />
+    <br/>
+    <input type="button" value="install 2048 test" onClick="hexlink.installApk('naozine.games.tv2048','http://apps.hihex.com/tv2048/2048plus-signed.apk',18);" />
+    <br/>
+    <br/> native sns share
+
+    <script type="text/javascript">
+        var ShareType_URL = 0;
+        var ShareType_Image = 1;
+        var ShareType_Text = 2;
+        var imgUrl = "http://www.hihex.com/img/index/icon_samewifi.png";
+
+        var shareImage = "iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3NpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4OGFlMjlmOS03ZDZiLTQxY2YtYTM4Zi0xNjFmYjA5MDk3NTMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTEwNjY3Njk5Q0YwMTFFNEFFRkFCN0UyQzczRkY2NDAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTEwNjY3Njg5Q0YwMTFFNEFFRkFCN0UyQzczRkY2NDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODAwOWZmNTQtNzFkOS00ZTBjLTgxNjQtODJiMTkwNDE4NWYwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjg4YWUyOWY5LTdkNmItNDFjZi1hMzhmLTE2MWZiMDkwOTc1MyIvPiA8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";
+
+        var shareObj = {
+            "ShareTitle": "share title",
+            "ShareUrl": "http://www.sina.com",
+            "ShareContent": "share your message to other apps",
+            "ShareType": ShareType_Text,
+        }
+        var shareWeb = {
+            "ShareTitle": "share title",
+            "ShareUrl": "http://www.hihex.com",
+            "ShareContent": "share to other apps",
+            "ShareImage": shareImage,
+            "ShareType": ShareType_URL,
+        }
+        var shareImage = {
+            "ShareTitle": "share title",
+            "ShareUrl": "http://www.hihex.com",
+            "ShareContent": "share hexlink with others",
+            "ShareImageUri": imgUrl,
+            "ShareType": ShareType_Image,
+        }
+    </script>
+    <br/>
+
+    <input type="button" value="我想要 分享文字" onClick="hexlink.shareMsg(JSON.stringify(shareObj));" />
+    <br/>
+    <input type="button" value="我想要 分享图片1" onClick="hexlink.shareMsg(JSON.stringify(shareImage));" />
+    <br/>
+    <input type="button" value="我想要 分享图片2" onClick="hexlink.shareMsg(JSON.stringify(shareWeb));" />
+
+    <br/>
+    <input type="button" value="我想要 分享链接 并 修改朋友圈顯示的缩略图" onClick="hexlink.shareMsg(JSON.stringify(shareWeb));" />
+
+</body>
+
+</html>
