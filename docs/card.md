@@ -30,9 +30,12 @@
 
 上面的例子中，`hexlink.installApk('packageName','apkUrl',1)` 就是我们提供的 API 接口，将好连遥控的原生能力提供给 Mobile Web Page 调用，使第三方可以专注内容提供，非常方便地与电视交互。
 
-demo:[好连卡片示例](../static/hexlinkcard.html)
+demo html:[好连卡片示例](../demo/hexlinkcard.html)
 
-调试时可以使用 [好连遥控-卡片调试专用版](../static/hexlink-jsitest.apk)
+调试时可以使用 [好连遥控-卡片调试专用版](../demo/hexlink-card-debugger.apk)
+
+使用第一张card输入网址来完成调试
+<!--demo: hexlink-android commit 052c3c4, base on v1.3.5 released-->
 
 ---
 ## API 列表
@@ -124,22 +127,32 @@ ShareType 表
 > 为了始终提供给用户一个通用的文本分享方式，请务必在必填项 `ShareContent` 填写有效信息，比如描述信息，即使在期望场景中可能不是必须的。
 
 
-###四、本地信息
+###四、调试接口
 
-####1.本地信息是如下格式的JSON,合作者如有需要可以通过以下信息进行特定的适配
-    hexlinkInfo={
-    "build": {
-        "BRAND": "Xiaomi",
-        "VERSION.SDK_INT": 17,
-        "MODEL": "2014011"
-    },
+####1.本机信息
+本机信息是如下格式的JSON,在需要使用时形如 `var os=hexlinkInfo.OS` 获取
+
+    var hexlinkInfo = {
     "OS": "Android",
+    "uuid": "db553224-xxxx-xxxx-xxxx-b2420bdf9802",
     "screenHeight": 1280,
     "screenWidth": 720,
-    "uuid": "db553224-10c9-325b-9e96-b2420bdf9802"
+    "Build": {
+        "VERSION": {
+            "SDK_INT": 17
+        },
+        "BRAND": "Xiaomi",
+        "MODEL": "2014011"
+    }
     }
 `uuid`为hex link用户设备的唯一识别码
 
 `build`的数据来自于系统的build，后续会根据需求增加，并且会提供一些电视的设备信息。
 
+> *注意*
+
+> 此接口需要在 **页面加载完成后** 才能生效，因此直接在script标签下运行的代码无法获取该对象。对于用户触发时才调用的接口则无影响，可以直接调用。
+
+####2.调试接口
+开发者可以通过`showAndroidToast(String msg)`来调试javascript interface在手机上是否正常
 
