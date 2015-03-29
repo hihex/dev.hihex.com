@@ -24,6 +24,6 @@
 
 发送邮件至 [info@hihex.com](mailto:info@hihex.com)
 
-[HiHex 社区](http://bbs.hihdex.com)
+[HiHex 社区](http://bbs.hihex.com)
 
 [HiHex 官网](http://www.hihex.com)
