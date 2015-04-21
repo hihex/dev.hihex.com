@@ -6,7 +6,7 @@
 ---
 ## SDK下载
 
-**[SDK下载](../demo/android-sbrc-sdk-release-2015-03-05-2e0633d-with-demo.zip)**
+[![download_sdk](../static/download-sdk.png)](../demo/android-sbrc-sdk-release-2015-03-05-2e0633d-with-demo.zip)
 
 ## SDK环境要求
 
