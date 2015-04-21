@@ -4,39 +4,39 @@
 - category: hexlink
 
 ---
-## SDK下载
+## SDK 下载
 
 [![download_sdk](../static/download-sdk.png)](../demo/android-sbrc-sdk-release-2015-03-05-2e0633d-with-demo.zip)
 
-## SDK环境要求
+## SDK 环境要求
 
-android系统要求：接入SDK使用要求为 Android 4.1（API 15）或更高，使用 x86 或 ARMv7（不支持MIPS）。
+| 环境要求     |                                                              |
+| -----------: | ------------------------------------------------------------ |
+| Android 系统 | Android 4.1（API 15）或更高，使用 x86 或 ARMv7（不支持MIPS） |
+| JDK 版本     | 不低于 1.6                                                   |
+| IDE          | Eclipse with ADT 22.3 或更高，Android Studio 1.1 或更高      |
 
-JDK版本: 不低于 1.6 。
 
-IDE要求：Eclipse with ADT 22.3 或更高，Android Studio 1.1 或更高。
+## 接入 SDK
 
-## SDK接入方法
+1. 解压下载好的 android-sbrc-sdk-release-*.zip。
 
-1. 解压android-sbrc-sdk。
+2. 将 SDK 的 `libs/` 文件夹与项目的`libs/`文件夹合并。
 
-2. 将 `libs/` 文件夹与项目目录的`libs/`文件夹合并。
+3. 放置 `android-sbrc.jar`：
 
-3. 放置`android-sbrc.jar`：
+   - ant 项目置于 `libs/` 下
+   - gradle 项目置于 `app/libs/` 下,并在 `build.gradle` 的 dependency 标签下加入:
 
- ant 项目置于 `libs/` 下。
+            compile files('libs/android-sbrc.jar')
 
- gradle项目置于 `app/libs/` 下,并在`build.gradle` 的dependency标签下加入:
-
-        compile files('libs/android-sbrc.jar')
-
-4. 将 `res/` 文件夹与项目目录的 `res/` 文件夹合并。
+4. 将 SDK 的 `res/` 文件夹与项目的 `res/` 文件夹合并。
 
 5. IDE 刷新后即可生效。
 
-![libs_image](../static/libs.png)
+   ![libs_image](../static/libs.png)
 
-##更新AndroidManifest.xml
+## 更新 AndroidManifest.xml
 
 1. 在 `manifest` 标签下加入以下权限:
 
@@ -45,8 +45,7 @@ IDE要求：Eclipse with ADT 22.3 或更高，Android Studio 1.1 或更高。
         <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" android:required="true"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" android:required="true"/>
 
-2. 在 `application` 标签下加入以下service以确保你的应用可以在没有安装hexlink-tv端的设备上被手机发现。
-
+2. 在 `application` 标签下加入以下 service，以确保即使电视或机顶盒设备没有安装 好连遥控TV端，你的应用也能被手机搜索发现并连接。
 
         <service android:exported="false" android:name="hihex.sbrc.miniservices.SbrcService">
             <intent-filter>
@@ -57,7 +56,8 @@ IDE要求：Eclipse with ADT 22.3 或更高，Android Studio 1.1 或更高。
         <activity android:name="hihex.sbrc.miniservices.PaymentWindowActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
 
- 3.至此，SDK的接入已经完成。
+3. 至此，SDK的接入已经完成。
+
 ## 一个简单的例子
 
 ```java
@@ -188,9 +188,10 @@ IDE要求：Eclipse with ADT 22.3 或更高，Android Studio 1.1 或更高。
 
 ```
 
-把上述代码复制到一个你的 `MainActivity.java` 文件中，然后就可以在电视上运行啦。试一下用手机连接并控制电视上面的色块运动吧。
+把上述代码复制到一个 `MainActivity.java` 文件中，编译后就可以在电视上运行啦。试一下用 [好连遥控](http://www.hihex.com) 手机 app 连接，并控制电视上面的色块运动吧。
 
 ---
+
 ## 更多手机与电视的交互
 
-以上简单地给出了一个如何用手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行[游戏操控](/docs/control.html)，[电视支付](/docs/payment.html)。
+以上简单地给出了一个手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行 [游戏操控](/docs/control.html)，[电视支付](/docs/payment.html)。
