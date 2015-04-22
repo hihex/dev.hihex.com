@@ -26,9 +26,21 @@ IDE要求：Eclipse with ADT 22.3 或更高，Android Studio 1.1 或更高。
 
  ant 项目置于 `libs/` 下。
 
- gradle项目置于 `app/libs/` 下,并在`build.gradle` 的dependency标签下加入:
+ gradle项目置于 `app/libs/` 下,并在`build.gradle` 下确保:
 
-        compile files('libs/android-sbrc.jar')
+        android {
+            ...
+            sourceSets {
+                main {
+                    jniLibs.srcDirs = ['libs']
+                }
+            }
+            ...
+        }
+
+        dependencies {
+            compile files('libs/android-sbrc.jar')
+        }
 
 4. 将 `res/` 文件夹与项目目录的 `res/` 文件夹合并。
 
