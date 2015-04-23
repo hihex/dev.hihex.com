@@ -26,9 +26,24 @@
 3. 放置 `android-sbrc.jar`：
 
    - ant 项目置于 `libs/` 下
-   - gradle 项目置于 `app/libs/` 下,并在 `build.gradle` 的 dependency 标签下加入:
 
+   -  gradle项目置于 `app/libs/` 下,并在`build.gradle` 下确保:
+
+        android {
+            ...
+            sourceSets {
+                main {
+                    jniLibs.srcDirs = ['libs']
+                }
+            }
+            ...
+        }
+
+        dependencies {
             compile files('libs/android-sbrc.jar')
+        }
+
+
 
 4. 将 SDK 的 `res/` 文件夹与项目的 `res/` 文件夹合并。
 
