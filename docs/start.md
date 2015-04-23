@@ -27,8 +27,9 @@
 
    - ant 项目置于 `libs/` 下
 
-   -  gradle项目置于 `app/libs/` 下,并在`build.gradle` 下确保:
-
+   - gradle 项目置于 `app/libs/` 下,并在 `build.gradle` 下确保:
+     
+     ```json
         android {
             ...
             sourceSets {
@@ -42,8 +43,7 @@
         dependencies {
             compile files('libs/android-sbrc.jar')
         }
-
-
+     ```
 
 4. 将 SDK 的 `res/` 文件夹与项目的 `res/` 文件夹合并。
 
