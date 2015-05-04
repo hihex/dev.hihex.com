@@ -54,6 +54,7 @@
       border-radius: 5px;
       width: 64px;
       height: 28px;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -128,7 +129,7 @@
     example_data.forEach(function (element, index, array) {
       var section = document.createElement('section')
       section.className = 'region'
-      section.style = "background-image: url('" + element.icon + "');"
+      section.style.backgroundImage = "url('" + element.icon + "')"
       section.appendChild((function () {
         var div = document.createElement('div')
         div.className = 'description'
