@@ -30,7 +30,7 @@
 
 上面的例子中，`hexlink.installApk('packageName','apkUrl',1)` 就是我们提供的 API 接口，将好连遥控的原生能力提供给 Mobile Web Page 调用，使第三方可以专注内容提供，非常方便地与电视交互。
 
-###Demo 
+###Demo
 
 
 1. 手机下载安装 [好连遥控-卡片调试专用版](../demo/hexlink-card-debugger.apk)
@@ -46,6 +46,8 @@
 ## API 列表
 
 ###一、应用管理接口
+
+[应用安装页面 Demo](../demo/app-mgt.html)（请查看页面源码）
 
 ####1. 安装应用
 

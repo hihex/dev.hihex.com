@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="author" content="HiHex">
+  <title>Apps recommend</title>
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+    body, h1 {
+      margin: 0px;
+    }
+    body {
+      color: #727272;
+    }
+    h1 {
+      font-weight: 400;
+      color: #222222;
+    }
+    .app-category, .app-size {
+      text-decoration: none;
+      margin-right: 20px;
+      margin-top: 7px;
+      display: inline-block;
+    }
+    .region {
+      height: 148px;
+      border-bottom: 1px solid #DCDCDC;
+      background-size: 64px;
+      background-repeat: no-repeat;
+      background-position: 10px 7px;
+      position: relative;
+    }
+    .description {
+      float: left;
+      margin: 7px 10px 7px 84px;
+    }
+    .description p {
+      overflow: hidden;
+      margin-top: 7px;
+      margin-bottom: 0px;
+      line-height: 1.375em;
+      max-height: 2.75em;
+    }
+    .install-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #20B7F0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      width: 64px;
+      height: 28px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 在HTML页面中调用JavaScript API实现安装应用到TV -->
+  <section style="background-image: url(&quot;https://apps.hihex.com/com.hihex.candyventure/J9fM7KZjYwgcj0NkkCmT4mkzwO4cEpDz.png&quot;);" class="region">
+    <div class="description">
+      <h1>糖宠大冒险</h1>
+      <ins class="app-category">游戏</ins>
+      <ins class="app-size">31.8 MB</ins>
+      <p>精心重制经典消除游戏，支持最多四人同时对战。在手机屏幕滑动触摸改变角度，松手发射糖果，操控灵活乐趣更多。</p>
+    </div>
+    <button class="install-button" onClick="hexlink.installApk('com.hihex.candyventure', 'https://apps.hihex.com/com.hihex.candyventure/candy_venture.apk', 12)">安装</button>
+  </section>
+  <!-- 你也可以使用外部数据源动态生成应用列表 -->
+  <script type="text/javascript">
+    "use strict"
+    var example_data = [
+      {
+        "id": 2,
+        "packageId": "naozine.games.tv2048",
+        "appName": "2048 TV 版",
+        "version": "18",
+        "versionCode": 2,
+        "developer": "HiHex",
+        "icon": "https://apps.hihex.com/tv2048/icon_2048.png",
+        "size": "733 KB",
+        "downloadUrl": "https://apps.hihex.com/tv2048/2048plus-signed.apk",
+        "description": "风靡一时的虐心小游戏。你够聪明吗？赶快来挑战试试！用好连操作更快捷，让你根本停不下来。",
+        "categoryName": "游戏"
+      },
+      {
+        "id": 3,
+        "packageId": "com.hihex.princessadventure.android",
+        "appName": "公主快跑",
+        "version": "2.0",
+        "versionCode": 2,
+        "developer": "HiHex",
+        "icon": "https://apps.hihex.com/princess-adventure/icon_princess.png",
+        "size": "9.7 MB",
+        "downloadUrl": "https://apps.hihex.com/princess-adventure/hihex_PrincessAdventure.apk",
+        "description": "收集、躲避、奔跑，乐趣无穷！萌萌的小公主为了挽救危在旦夕的国家，跨过山和大海收集钥匙打开宝箱！",
+        "categoryName": "游戏"
+      },
+      {
+        "id": 4,
+        "packageId": "com.hihex.game.redwhiteblock.android",
+        "appName": "疯狂的笑脸",
+        "version": "1.1",
+        "versionCode": 2,
+        "developer": "HiHex",
+        "icon": "https://apps.hihex.com/crazysmile/icon_crazysmile.png",
+        "size": "5.3 MB",
+        "downloadUrl": "https://apps.hihex.com/crazysmile/hihex_crazysmile.apk",
+        "description": "在规定时间内击打尽可能多的笑脸。配乐逗比，操作简单，乐趣无穷！快来一起来活动活动手部肌肉~",
+        "categoryName": "游戏"
+      },
+      {
+        "id": 5,
+        "packageId": "com.hihex.game.plane.android",
+        "appName": "是男人就坚持20秒",
+        "version": "2.0",
+        "versionCode": 2,
+        "developer": "HiHex",
+        "icon": "https://apps.hihex.com/man20s/icon_man20s.png",
+        "size": "4.0 MB",
+        "downloadUrl": "https://apps.hihex.com/man20s/hihex_Man20s.apk",
+        "description": "超经典的子弹躲避游戏！撑够20秒争夺神级称号！来试试全球排行榜上你能排第几。",
+        "categoryName": "游戏"
+      }
+    ]
+    example_data.forEach(function (element, index, array) {
+      var section = document.createElement('section')
+      section.className = 'region'
+      section.style = "background-image: url('" + element.icon + "');"
+      section.appendChild((function () {
+        var div = document.createElement('div')
+        div.className = 'description'
+        div.appendChild((function () {
+          var h1 = document.createElement('h1')
+          h1.innerHTML = element.appName
+          return h1
+        })())
+        div.appendChild((function () {
+          var ins = document.createElement('ins')
+          ins.className = 'app-category'
+          ins.innerHTML = element.categoryName
+          return ins
+        })())
+        div.appendChild((function () {
+          var ins = document.createElement('ins')
+          ins.className = 'app-size'
+          ins.innerHTML = element.size
+          return ins
+        })())
+        div.appendChild((function () {
+          var p = document.createElement('p')
+          p.innerHTML = element.description
+          return p
+        })())
+        return div
+      })())
+      section.appendChild((function () {
+        var button = document.createElement('button')
+        button.className = 'install-button'
+        button.innerHTML = '安装'
+        button.onclick = function () {
+          hexlink.installApk(element.packageId, element.downloadUrl, element.versionCode)
+        }
+        return button
+      })())
+      document.body.appendChild(section)
+    })
+  </script>
+</body>
+</html>
