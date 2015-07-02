@@ -14,6 +14,21 @@
 ## 示例代码
 
 ```java
-RemoteTextInputMonitor.attach(sbrcManager, textView);
+@Override
+protected final void onSbrcReady() {
+    final SbrcManager manager = getSbrcManager();
+
+    ...
+
+    // 只要对每个输入框注册一次就可以用了！
+
+    final EditText textField1 = (EditText) findViewById(R.id.input1);
+    RemoteTextInputMonitor.attach(manager, textField1);
+
+    final EditText textField2 = (EditText) findViewById(R.id.input2);
+    RemoteTextInputMonitor.attach(manager, textField2);
+
+    ...
+}
 ```
 

@@ -6,207 +6,199 @@
 ---
 ## SDK 下载
 
-[![download_sdk](../static/download-sdk.png)](../demo/android-sbrc-sdk-release-2015-03-05-2e0633d-with-demo.zip)
+(如使用 Android Studio 毋须下载)
+
+[![download_sdk](../static/download-sdk.png)](../maven/hihex/sbrc/sbrc/1.6.2/sbrc-1.6.2.aar)
 
 ## SDK 环境要求
 
-| 环境要求     |                                                              |
-| -----------: | ------------------------------------------------------------ |
-| Android 系统 | Android 4.1（API 15）或更高，使用 x86 或 ARMv7（不支持MIPS） |
-| JDK 版本     | 不低于 1.6                                                   |
-| IDE          | Eclipse with ADT 22.3 或更高，Android Studio 1.1 或更高      |
+| 环境要求     |                                                                   |
+|-------------:|-------------------------------------------------------------------|
+| Android 系统 | Android 4.1（API 15）或更高，使用 x86 或 ARMv7（不支持MIPS）      |
+| JDK 版本     | 不低于 1.6                                                        |
+| IDE          | Android Studio 1.3 beta 或更高、Eclipse Mars 及 ADT 23.0.6 或更高 |
 
 
 ## 接入 SDK
 
-1. 解压下载好的 android-sbrc-sdk-release-*.zip。
+### 如果您使用 Gradle (Android Studio)
 
-2. 将 SDK 的 `libs/` 文件夹与项目的`libs/`文件夹合并。
+1. 在属于该模块的 `build.gradle` 加上以下代码：
 
-3. 放置 `android-sbrc.jar`：
-
-   - ant 项目置于 `libs/` 下
-
-   - gradle 项目置于 `app/libs/` 下,并在 `build.gradle` 下确保:
-     
-     ```json
-        android {
-            ...
-            sourceSets {
-                main {
-                    jniLibs.srcDirs = ['libs']
-                }
+        repositories {
+            maven {
+                url 'http://dev.hihex.com/maven'
             }
-            ...
         }
-
         dependencies {
-            compile files('libs/android-sbrc.jar')
+            compile 'hihex.sbrc:sbrc:1.6.2@aar'
         }
-     ```
 
-4. 将 SDK 的 `res/` 文件夹与项目的 `res/` 文件夹合并。
+2. 点击 “Sync Project with Gradle Files” 让项目与 Gradle 设置同步。
 
-5. IDE 刷新后即可生效。
+### 如果您使用 Eclipse ADT…
 
-   ![libs_image](../static/libs.png)
+> 亲，Google 已经宣布 [不再支持 Eclipse ADT 了](http://android-developers.blogspot.hk/2015/06/an-update-on-eclipse-android-developer.html)，我们也计划全面转向 Android Studio，请赶紧换 IDE 吧~
 
-## 更新 AndroidManifest.xml
+1. 先安装 Python 3。
+2. [下载 SDK](../maven/hihex/sbrc/sbrc/1.6.2/sbrc-1.6.2.aar)
+3. 下载 `aar-to-eclipse`：
 
-1. 在 `manifest` 标签下加入以下权限:
+        curl -L -O https://github.com/hihex/aar-to-eclipse/raw/master/aar-to-eclipse.py
 
-        <uses-permission android:name="android.permission.INTERNET" android:required="true"/>
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" android:required="true"/>
-        <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" android:required="true"/>
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" android:required="true"/>
+4. 利用此程序将 `sbrc.aar` 转换成 Eclipse Android Library：
 
-2. 在 `application` 标签下加入以下 service，以确保即使电视或机顶盒设备没有安装 好连遥控TV端，你的应用也能被手机搜索发现并连接。
+        ./aar-to-eclipse.py sbrc.aar
 
-        <service android:exported="false" android:name="hihex.sbrc.miniservices.SbrcService">
-            <intent-filter>
-                <action android:name="hihex.sbrc.services.SbrcService"/>
-                <category android:name="hihex.sbrc.services.SbrcService"/>
-            </intent-filter>
-        </service>
-        <activity android:name="hihex.sbrc.miniservices.PaymentWindowActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
-
-3. 至此，SDK的接入已经完成。
+5. 在 Eclipse 导入刚才产生的 `sbrc` 文件夹。
+6. 在您的项目中的 `project.properties` 加入一行 `manifestmerger.enabled=true`，便可使用此 SDK 库了。
 
 ## 一个简单的例子
 
+完整代码请查看我们的 [GitHub repository](https://github.com/hihex/hexlink-demo/tree/e328c2cb1e109c74337bbb27598e1f747813ab70/HelloSbrcActivity)
+
 ```java
+package hihex.sbrc_samples.hello_sbrc;
 
-	package com.hihex.quickstartsbrc;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-    import android.app.Activity;
-    import android.graphics.Color;
-    import android.os.Bundle;
-    import android.util.Log;
-    import android.view.View;
-    import android.widget.FrameLayout;
+import java.util.Random;
 
-    import java.util.Random;
+import hihex.sbrc.Client;
+import hihex.sbrc.ClientFactory;
+import hihex.sbrc.DisconnectReason;
+import hihex.sbrc.Identity;
+import hihex.sbrc.SbrcManager;
+import hihex.sbrc.StandardClient;
+import hihex.sbrc.android.SbrcActivity;
+import hihex.sbrc.events.PanState;
+import hihex.sbrc.modules.JoystickModule;
 
-    import hihex.sbrc.Client;
-    import hihex.sbrc.ClientFactory;
-    import hihex.sbrc.DisconnectReason;
-    import hihex.sbrc.Identity;
-    import hihex.sbrc.SbrcManager;
-    import hihex.sbrc.events.PanEvent;
-    import hihex.sbrc.events.PanState;
+// This is a sample Android-based activity. Connect a HexLink client from your cellphone, and drag the color squares.
+//
+// The SbrcActivity class is provided to simplify initialization of the HexLink server. If you are writing an
+// Android-based single-activity application, you should start by subclassing SbrcActivity.
+//
+public final class HelloSbrcActivity extends SbrcActivity {
+    private static final Random sRandom = new Random();
+    private FrameLayout mFrameLayout = null;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    public class MainActivity extends Activity {
-        Activity activity;
-        private FrameLayout mLayout;
+        // All normal Android initialization stuff goes to here.
+        mFrameLayout = new FrameLayout(this);
+        setContentView(mFrameLayout);
+    }
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            activity = this;
-            mLayout = new FrameLayout(this);
-            mLayout.setBackgroundColor(0xffdddddd);
-            setContentView(mLayout);
+    // This method is called when the HexLink service is fully functional. All HexLink-related methods should be placed
+    // here.
+    @Override
+    protected void onSbrcReady() {
+        final SbrcManager manager = getSbrcManager();
 
-            //important!
-            SbrcManager.instance.initialize(this);
+        // HexLink supports multi-user natively. The ClientFactory will create a Client instance for each connected
+        // user.
+        manager.setClientFactory(new ClientFactory() {
+            @Override
+            public Client create() {
+                return new SampleClient();
+            }
+        });
+    }
 
-            initSbrcClient();
+    // The basic ingredient of a Client is its touch screen. The StandardClient class provides high-level gesture
+    // analysis of these touch events.
+    //
+    // In a StandardClient, the screen is divided evenly into rectangles called Modules. Each Module define a gesture
+    // idiom such as "D-Pad", "Joystick", "Mouse", etc. Combine these Modules together to provide a powerful controlling
+    // experience.
+    //
+    private final class SampleClient extends StandardClient {
+        private final TextView mView;
+
+        public SampleClient() {
+            // Here we simulate the whole touch screen as a joystick.
+            super(/*rows*/1, /*columns*/1, /*isLandscape*/false);
+
+            final JoystickModule module = new JoystickModule() {
+                @Override
+                protected void onJoystickEvent(final PanState panState, final float relX, final float relY) {
+                    if (panState == PanState.kCanceled) {
+                        return;
+                    }
+
+                    // Move our color box. The `relX` and `relY` describe the displacement from the center. By default
+                    // the distance is less than 144 which can be configured using `module.setRadius()`. Note that in
+                    // HexLink, all clients' touch screen widths are normalized to 320.
+                    //
+                    // Note! The callbacks from libsbrc usually aren't run in the main thread. This is a deliberate choice, as
+                    // many game engines don't use the main thread as the rendering thread anyway.
+                    //
+                    // This means if we want to update the Android UI, we should remember to call `runOnUiThread()`:
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mView.getLayoutParams();
+                            params.leftMargin = 144 + (int) relX;
+                            params.topMargin = 144 + (int) relY;
+                            mView.setLayoutParams(params);
+                        }
+                    });
+                }
+            };
+
+            setModules(module);
+
+            mView = new TextView(HelloSbrcActivity.this);
         }
 
-        private final void initSbrcClient() {
-            final SbrcManager manager = SbrcManager.instance;
+        // This method is called whenever the user is connected. So let's show our color box.
+        @Override
+        public void onConnect(final Identity identity) {
+            super.onConnect(identity);
 
-            // Set the client factory. This is used to generate clients for receiving events.
-            manager.setClientFactory(new ClientFactory() {
+            runOnUiThread(new Runnable() {
                 @Override
-                public Client create() {
-                    return new CustomClient(activity, mLayout);
+                public void run() {
+                    final int randomColor = Color.HSVToColor(new float[]{sRandom.nextFloat() * 360, 1, 1});
+                    mView.setBackgroundColor(randomColor);
+                    mView.setTextColor(Color.BLACK);
+                    mView.setText(identity.nickname);
+
+                    final FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(200, 50);
+                    params.leftMargin = 144;
+                    params.topMargin = 144;
+                    mFrameLayout.addView(mView, params);
                 }
             });
         }
 
+        // This method is called whenever we are sure that the user is disconnected (due to network conditions, this
+        // method may not be called at the same time the connection is lost). Here we will remove the color box.
         @Override
-        public void onDestroy() {
-            super.onDestroy();
-            SbrcManager.instance.destroy(this);
-        }
+        public void onDisconnect(final Identity identity, final DisconnectReason disconnectReason) {
+            super.onDisconnect(identity, disconnectReason);
 
-        @Override
-        protected void onPause() {
-            super.onPause();
-            SbrcManager.instance.pause();
-        }
-
-        @Override
-        protected void onResume() {
-            super.onResume();
-            SbrcManager.instance.resume();
-        }
-
-        class CustomClient extends Client {
-            private final FrameLayout mParent;
-            private final View mView;
-            private final FrameLayout.LayoutParams mLayoutParams;
-            private final Activity mContext;
-            private final Random mRng = new Random();
-
-            public CustomClient(final Activity context, final FrameLayout layout) {
-                mParent = layout;
-                mContext = context;
-                mView = new View(context);
-                final int color = Color.HSVToColor(new float[]{mRng.nextFloat() * 360, 1, 1});
-                mView.setBackgroundColor(color);
-                mLayoutParams = new FrameLayout.LayoutParams(50, 50);
-            }
-
-            @Override
-            public void onConnect(final Identity identity) {
-                super.onConnect(identity);
-                Log.d("sbrc", "onConnect:" + identity.toString());
-                mContext.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mLayoutParams.topMargin = 100;
-                        mLayoutParams.leftMargin = 400;
-                        mParent.addView(mView, mLayoutParams);
-                    }
-                });
-                onIdentityUpdated(null, identity);
-            }
-
-            @Override
-            public void onDisconnect(final Identity identity, final DisconnectReason reason) {
-                super.onDisconnect(identity, reason);
-                Log.d("sbrc", "onDisconnect:" + identity.toString());
-            }
-
-            @Override
-            public void onPan(PanEvent panEvent) {
-                Log.d("sbrc", "onPan:" + panEvent.toString());
-                if (panEvent.state != PanState.kBegin) {
-                    final float dx = panEvent.dx;
-                    final float dy = panEvent.dy;
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mLayoutParams.leftMargin += dx;
-                            mLayoutParams.topMargin += dy;
-                            mView.setLayoutParams(mLayoutParams);
-                        }
-                    });
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mFrameLayout.removeView(mView);
                 }
-            }
+            });
         }
     }
-
+}
 ```
 
-把上述代码复制到一个 `MainActivity.java` 文件中，编译后就可以在电视上运行啦。试一下用 [好连遥控](http://www.hihex.com) 手机 app 连接，并控制电视上面的色块运动吧。
+把上述代码复制到一个 MainActivity 文件中，编译后就可以在电视上运行啦。试一下用 [好连遥控](http://www.hihex.com) 手机 app 连接，并控制电视上面的色块运动吧。
 
 ---
 
 ## 更多手机与电视的交互
 
-以上简单地给出了一个手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行 [游戏操控](/docs/control.html)，[电视支付](/docs/payment.html)。
+以上简单地给出了一个手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行 [游戏操控](/docs/control.html)、[电视输入](/docs/ime.html)、[电视支付](/docs/payment.html)。
