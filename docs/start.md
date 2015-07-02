@@ -23,7 +23,7 @@
 
 ### 如果您使用 Gradle (Android Studio)
 
-1. 在属于该模组的 `build.gradle` 加上以下代码：
+1. 在属于该模块的 `build.gradle` 加上以下代码：
 
         repositories {
             maven {
@@ -34,11 +34,11 @@
             compile 'hihex.sbrc:sbrc:1.6.2@aar'
         }
 
-2. 按一下 “Sync Project with Gradle Files” 让专案与 Gradle 设定同步。
+2. 点击 “Sync Project with Gradle Files” 让项目与 Gradle 设置同步。
 
 ### 如果您使用 Eclipse ADT…
 
-> 亲，Google 已经宣布[不再支援 Eclipse ADT 了](http://android-developers.blogspot.hk/2015/06/an-update-on-eclipse-android-developer.html)，我们也不会支持多久了，赶紧换 IDE 吧
+> 亲，Google 已经宣布 [不再支持 Eclipse ADT 了](http://android-developers.blogspot.hk/2015/06/an-update-on-eclipse-android-developer.html)，我们也计划全面转向 Android Studio，请赶紧换 IDE 吧~
 
 1. 先安装 Python 3。
 2. [下载 SDK](../maven/hihex/sbrc/sbrc/1.6.2/sbrc-1.6.2.aar)
@@ -46,12 +46,12 @@
 
         curl -L -O https://github.com/hihex/aar-to-eclipse/raw/master/aar-to-eclipse.py
 
-4. 利用此程式将 `sbrc.aar` 转换成 Eclipse Android Library：
+4. 利用此程序将 `sbrc.aar` 转换成 Eclipse Android Library：
 
         ./aar-to-eclipse.py sbrc.aar
 
-5. 在 Eclipse 汇入刚才产生的 `sbrc` 文件夹。
-6. 在您的专案中的 `project.properties` 加入一行 `manifestmerger.enabled=true`，便可使用此程式库。
+5. 在 Eclipse 导入刚才产生的 `sbrc` 文件夹。
+6. 在您的项目中的 `project.properties` 加入一行 `manifestmerger.enabled=true`，便可使用此 SDK 库了。
 
 ## 一个简单的例子
 
@@ -201,4 +201,4 @@ public final class HelloSbrcActivity extends SbrcActivity {
 
 ## 更多手机与电视的交互
 
-以上简单地给出了一个手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行 [游戏操控](/docs/control.html)，[电视支付](/docs/payment.html)。
+以上简单地给出了一个手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行 [游戏操控](/docs/control.html)、[电视输入](/docs/ime.html)、[电视支付](/docs/payment.html)。
