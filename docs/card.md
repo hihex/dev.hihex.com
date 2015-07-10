@@ -19,16 +19,17 @@
 <html>
   <head>
     <title>测试页面</title>
+    <script src="hexlink.js"></script>
   </head>
   <body>
     好连遥控内嵌卡片 <br/>
-    <input type="button" value="点击安装 2048" onClick="hexlink.installApk('naozine.games.tv2048','http://apps.hihex.com/tv2048/2048plus-signed.apk',18);" /><br/>
+    <input type="button" value="点击安装 2048" onClick="hexlink.installApk({packageName: 'naozine.games.tv2048', apkUrl: 'http://apps.hihex.com/tv2048/2048plus-signed.apk', versionCode: 18});" /><br/>
     <div id="content">内容显示</div>
   </body>
 </html>
 ```
 
-上面的例子中，`hexlink.installApk('packageName','apkUrl',1)` 就是我们提供的 API 接口，将好连遥控的原生能力提供给 Mobile Web Page 调用，使第三方可以专注内容提供，非常方便地与电视交互。
+上面的例子中，`hexlink.installApk({packageName: string, apkUrl: string, versionCode: int})` 就是我们提供的 API 接口，将好连遥控的原生能力提供给 Mobile Web Page 调用，使第三方可以专注内容提供，非常方便地与电视交互。
 
 ###Demo
 
@@ -52,7 +53,7 @@
 ####1. 安装应用
 
 ```javascript
-installApk(packageName,apkUrl,versionCode)
+installApk({packageName: string, apkUrl: string, versionCode: int})
 ```
 
 电视将开始安装从 `apkUrl` 获取的安装包
@@ -68,7 +69,7 @@ installApk(packageName,apkUrl,versionCode)
 ####2. 取消安装
 
 ```javascript
-cancelInstall(packageName)
+cancelInstall({packageName: string})
 ```
 
 电视将取消 `packageName` 的安装
@@ -85,7 +86,7 @@ cancelInstall(packageName)
 ####1. 投射视频
 
 ```javascript
-castVideo(videoUrl)
+castVideo({videoUrl: string})
 ```
 
 电视将播放 `videoUrl` 所指定的流媒体
@@ -103,10 +104,10 @@ castVideo(videoUrl)
 ####1. 分享到应用
 
 ```javascript
-shareMsg(shareJson)
+shareMsg(shareObj)
 ```
 
-手机将发起一次信息分享，其中 `shareJson` 参数应为以下格式的 JSON 字符串
+手机将发起一次信息分享，其中 `shareObj` 参数应为以下格式的 JavaScript 对象
 
 |键名|类型|描述|
 |--:|---|---|---|
@@ -136,7 +137,7 @@ ShareType 表
 
 ###四、调试接口
 
-####1. 本机信息
+####1. 本机信息（仅适用于 Android）
 
 本机信息是如下格式的 JSON，在需要时以 `var os = hexlinkInfo.OS` 的方式获取。
 
@@ -170,5 +171,5 @@ ShareType 表
 
 ####2.调试接口
 
-开发者可以通过`showAndroidToast(String msg)`来调试javascript interface在手机上是否正常
+开发者可以通过`showToast(String msg)`来调试javascript interface在手机上是否正常
 

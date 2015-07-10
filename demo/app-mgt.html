@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <meta name="author" content="HiHex">
   <title>Apps recommend</title>
+  <script src="hexlink.js"></script>
   <style type="text/css">
     * {
       box-sizing: border-box;
@@ -60,14 +61,14 @@
 </head>
 <body>
   <!-- 在HTML页面中调用JavaScript API实现安装应用到TV -->
-  <section style="background-image: url(&quot;https://apps.hihex.com/com.hihex.candyventure/J9fM7KZjYwgcj0NkkCmT4mkzwO4cEpDz.png&quot;);" class="region">
+  <section style="background-image: url(&quot;https://apps.hihex.com/com.hihex.candyventure/icon.png&quot;);" class="region">
     <div class="description">
       <h1>糖宠大冒险</h1>
       <ins class="app-category">游戏</ins>
       <ins class="app-size">31.8 MB</ins>
       <p>精心重制经典消除游戏，支持最多四人同时对战。在手机屏幕滑动触摸改变角度，松手发射糖果，操控灵活乐趣更多。</p>
     </div>
-    <button class="install-button" onClick="hexlink.installApk('com.hihex.candyventure', 'https://apps.hihex.com/com.hihex.candyventure/candy_venture.apk', 12)">安装</button>
+    <button class="install-button" onClick="hexlink.installApk({packageName: 'com.hihex.candyventure', apkUrl: 'https://apps.hihex.com/com.hihex.candyventure/candy_venture.apk', versionCode: 12})">安装</button>
   </section>
   <!-- 你也可以使用外部数据源动态生成应用列表 -->
   <script type="text/javascript">
@@ -162,7 +163,7 @@
         button.className = 'install-button'
         button.innerHTML = '安装'
         button.onclick = function () {
-          hexlink.installApk(element.packageId, element.downloadUrl, element.versionCode)
+          hexlink.installApk({packageName: element.packageId, apkUrl: element.downloadUrl, versionCode: element.versionCode})
         }
         return button
       })())

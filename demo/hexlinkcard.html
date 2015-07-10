@@ -2,6 +2,7 @@
 
 <head>
     <title>hexlink card 测试页面</title>
+    <script src="hexlink.js"></script>
 </head>
 
 <body>
@@ -13,14 +14,14 @@
     <script type="text/javascript">
     function ClickHexlinkApi(){
         var os=hexlinkInfo.OS;
-        hexlink.showAndroidToast(os);
+        hexlink.showToast(os);
     }
-    
+
     </script>
     <br/>
-    <input type="button" value="get Client Build BRAND" onClick="hexlink.showAndroidToast(hexlinkInfo.Build.BRAND)" />
+    <input type="button" value="get Client Build BRAND" onClick="hexlink.showToast(hexlinkInfo.Build.BRAND)" />
     <br/>
-    <input type="button" value="get Client VERSION" onClick="hexlink.showAndroidToast(hexlinkInfo.Build.VERSION.SDK_INT)" />
+    <input type="button" value="get Client VERSION" onClick="hexlink.showToast(hexlinkInfo.Build.VERSION.SDK_INT)" />
     <br/>
     <input type="button" value="get Client os" onClick="ClickHexlinkApi()" />
     <br/>
@@ -30,9 +31,9 @@
     <script type="text/javascript">
         var videoUrl = 'http://pl.youku.com/playlist/m3u8?ts=1425021226&keyframe=0&vid=XNjIyMDc4MTY4&type=mp4&ep=diaWH0mPV8wC4CrYjz8bZivqcXFeXJZ0rGbM%2FKYxBMZAIezQmjjRwQ%3D%3D&sid=44250212259771217856a&token=3606&ctype=12&ev=1&oip=3079203019';
     </script>
-    <input type="button" value="cast video" onClick="hexlink.castVideo(videoUrl);" />
+    <input type="button" value="cast video" onClick="hexlink.castVideo({videoUrl: videoUrl});" />
     <br/>
-    <input type="button" value="install 2048 test" onClick="hexlink.installApk('naozine.games.tv2048','http://apps.hihex.com/tv2048/2048plus-signed.apk',18);" />
+    <input type="button" value="install 2048 test" onClick="hexlink.installApk({packageName: 'naozine.games.tv2048', apkUrl: 'http://apps.hihex.com/tv2048/2048plus-signed.apk', versionCode: 18});" />
     <br/>
     <br/> native sns share
 
@@ -79,16 +80,16 @@
     </script>
     <br/>
 
-    <input type="button" value="我想要 分享文字" onClick="hexlink.shareMsg(JSON.stringify(shareText));" />
+    <input type="button" value="我想要 分享文字" onClick="hexlink.shareMsg(shareText);" />
     <br/>
-    <input type="button" value="我想要 分享图片(base64)" onClick="hexlink.shareMsg(JSON.stringify(shareImageBase64));" />
+    <input type="button" value="我想要 分享图片(base64)" onClick="hexlink.shareMsg(shareImageBase64);" />
     <br/>
-    <input type="button" value="我想要 分享图片(web)" onClick="hexlink.shareMsg(JSON.stringify(shareImageUri));" />
+    <input type="button" value="我想要 分享图片(web)" onClick="hexlink.shareMsg(shareImageUri);" />
 
     <br/>
-    <input type="button" value="我想要 分享链接" onClick="hexlink.shareMsg(JSON.stringify(shareUrl));" />
+    <input type="button" value="我想要 分享链接" onClick="hexlink.shareMsg(shareUrl);" />
     <br/>
-    <input type="button" value="我想要 分享链接 并 修改朋友圈顯示的缩略图" onClick="hexlink.shareMsg(JSON.stringify(shareUrlWithImage));" />
+    <input type="button" value="我想要 分享链接 并 修改朋友圈顯示的缩略图" onClick="hexlink.shareMsg(shareUrlWithImage);" />
 
 </body>
 

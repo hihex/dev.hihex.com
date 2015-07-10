@@ -12,11 +12,13 @@
     "url": "https://github.com/hihex/dev.hihex.com/issues"
   },
   "spm": {
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {
       "jquery": "1.7.2",
       "arale-sticky": "1.4.0"
     }
+  },
+  "dependencies": {
+    "spm": "~3.4.3"
   }
 }
