@@ -2,7 +2,7 @@
 <html lang="{{theme.lang}}">
     <head>
         <meta charset="UTF-8">
-        {%- if post.filename == 'index' %}        
+        {%- if post.filename == 'index' %}
         <title>{{config.package.title|title}} - {{config.package.description}}</title>
         {%- else %}
         <title>{{config.package.title|title}} - {{post.title}}</title>
@@ -46,32 +46,11 @@
         }
         </script>
 
-        {%- set pkg = config.package %}
-        {%- set deps = dependencies %}
-
-        {%- if deps.seajs %}
-        <script src="{{content_url('')}}spm_modules/{{deps.seajs}}?nowrap"></script>
-        {%- else %}
-        <script src="{{static_url('js/sea.js?nowrap')}}"></script>
-        {%- endif %}
-
-        <script>
-          seajs.config({
-            base: "{{content_url('')}}",
-            alias: {{deps|json_encode}}
-          });
-        </script>
         <!--[if lt IE 9]>
         <script src="{{static_url('js/html5shiv.js')}}"></script>
         <![endif]-->
         {%- endblock %}
         {%- block afterstyle %}{% endblock %}
-        <script>
-        seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
-            Sticky('.side-area', 20);
-            side.init();
-        });
-        </script>
     </head>
     <body>
         <div id="body-wrapper">
@@ -90,7 +69,7 @@
             <div class="nav-area">
                 <ol class="main-nav">
                     <li><a href="/"><i title="首页" class="iconfont"></i> 首页</a></li>
-                    {%- for item in resource.pages|find_category('hexlink') %}
+                    {%- for item in resource.pages|sortByOrder %}
                     <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
                     {%- endfor %}
                 </ol>
@@ -110,7 +89,7 @@
                 </script>
                 <div class="content-area">
                     <h1>{{post.title}}</h1>
-                    <div class="content">{{ post.html|replace_code|add_anchor }}</div>
+                    <div class="content">{{ post.html|addAnchor }}</div>
                 </div>
                 {%- if post.filename == 'index' %}
                 <div class="comment-area">
@@ -123,7 +102,7 @@
                         ds.type = 'text/javascript';ds.async = true;
                         ds.src = 'http://static.duoshuo.com/embed.js';
                         ds.charset = 'UTF-8';
-                        (document.getElementsByTagName('head')[0] 
+                        (document.getElementsByTagName('head')[0]
                         || document.getElementsByTagName('body')[0]).appendChild(ds);
                         })();
                     </script>
@@ -135,14 +114,12 @@
         <div id="footer-wrapper">
             <footer>
             <p class="powered">
-                HiHex Limited © 
+                HiHex Limited ©
                 Powered by
-                <a href="http://seajs.org" target="_blank">Sea.js</a> •
-                <a href="http://spmjs.io" target="_blank">spmjs.io</a> •
                 <a href="{{system.homepage}}" target="_blank">{{system.name}}</a>
             </p>
             </footer>
         </div>
+        <script src="static/js/bundle.js"></script>
     </body>
 </html>
-

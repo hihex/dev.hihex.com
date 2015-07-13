@@ -1,7 +1,6 @@
 # 电视输入
 
 - order: 5
-- category: hexlink
 
 ---
 

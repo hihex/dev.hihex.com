@@ -1,7 +1,6 @@
 #开始使用
 
 - order: 2
-- category: hexlink
 
 ---
 ## SDK 下载
