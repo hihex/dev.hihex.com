@@ -3,7 +3,7 @@ SHELL := /bin/bash
 
 all: clean build
 
-install: ;@echo "Installing ${PROJECT}....."; \
+deps: ;@echo "Installing ${PROJECT}....."; \
 	npm install
 
 clean:
