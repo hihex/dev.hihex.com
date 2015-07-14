@@ -1,6 +1,7 @@
 # 内嵌卡片
 
 - order: 6
+- category: hexlink
 
 ---
 
@@ -33,7 +34,7 @@
 ###Demo
 
 
-1. 手机下载安装 [好连遥控-卡片调试专用版](../demo/hexlink-card-debugger.apk)
+1. 手机下载安装 [好连遥控-卡片调试专用版](https://apps.hihex.com/demo/HexLink-v1.6.1-webview-debugger.apk)
 2. 电视/盒子下载安装 [好连遥控 TV 端](http://apps.hihex.com/hexlink-tv/HexLinkTv.apk)
 3. 手机和电视/盒子在同一个 WiFi 下，手机好连遥控连接上 TV 设备
 4. 使用第一张卡片输入网址来完成调试

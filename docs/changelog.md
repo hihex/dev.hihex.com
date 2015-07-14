@@ -1,6 +1,7 @@
 # SDK更新日志
 
 - order: 7
+- category: hexlink
 
 ---
 

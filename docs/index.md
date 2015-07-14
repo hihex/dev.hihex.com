@@ -1,6 +1,7 @@
 # 关于 HiHex
 
 - order: 1
+- category: hexlink
 
 ---
 

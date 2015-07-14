@@ -69,7 +69,7 @@
             <div class="nav-area">
                 <ol class="main-nav">
                     <li><a href="/"><i title="首页" class="iconfont"></i> 首页</a></li>
-                    {%- for item in resource.pages|sortByOrder %}
+                    {%- for item in resource.pages|find_category('hexlink') %}
                     <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
                     {%- endfor %}
                 </ol>
@@ -89,7 +89,7 @@
                 </script>
                 <div class="content-area">
                     <h1>{{post.title}}</h1>
-                    <div class="content">{{ post.html|addAnchor }}</div>
+                    <div class="content">{{ post.html|add_anchor }}</div>
                 </div>
                 {%- if post.filename == 'index' %}
                 <div class="comment-area">

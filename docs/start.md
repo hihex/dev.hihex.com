@@ -1,13 +1,14 @@
 #开始使用
 
 - order: 2
+- category: hexlink
 
 ---
 ## SDK 下载
 
 (如使用 Android Studio 毋须下载)
 
-[![download_sdk](../static/download-sdk.png)](../maven/hihex/sbrc/sbrc/1.6.2.954/sbrc-1.6.2.954.aar)
+[![download_sdk](../static/download-sdk.png)](https://apps.hihex.com/maven/hihex/sbrc/sbrc/1.6.2.954/sbrc-1.6.2.954.aar)
 
 ## SDK 环境要求
 
@@ -40,7 +41,7 @@
 > 亲，Google 已经宣布 [不再支持 Eclipse ADT 了](http://android-developers.blogspot.hk/2015/06/an-update-on-eclipse-android-developer.html)，我们也计划全面转向 Android Studio，请赶紧换 IDE 吧~
 
 1. 先安装 Python 3。
-2. [下载 SDK](../maven/hihex/sbrc/sbrc/1.6.2.954/sbrc-1.6.2.954.aar)
+2. [下载 SDK](https://apps.hihex.com/maven/hihex/sbrc/sbrc/1.6.2.954/sbrc-1.6.2.954.aar)
 3. 下载 `aar-to-eclipse`：
 
         curl -L -O https://github.com/hihex/aar-to-eclipse/raw/master/aar-to-eclipse.py
