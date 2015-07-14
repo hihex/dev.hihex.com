@@ -11,3 +11,6 @@ clean:
 
 build: ;@echo "building ${PROJECT}....."; \
 	nico build && webpack -p
+
+debug: ;@echo "building debug version ${PROJECT}....."; \
+	nico build && webpack -d
