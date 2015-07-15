@@ -201,4 +201,4 @@ public final class HelloSbrcActivity extends SbrcActivity {
 
 ## 更多手机与电视的交互
 
-以上简单地给出了一个手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行 [游戏操控](/docs/control.html)、[电视输入](/docs/ime.html)、[电视支付](/docs/payment.html)。
+以上简单地给出了一个手机操控电视的示例，但是 HexLink 本身不是一个只提供这些功能的解决方案，你还可以使用这一套 SDK 进行 [游戏操控](control.html)、[电视输入](ime.html)、[电视支付](payment.html)。
