@@ -1,6 +1,6 @@
-var $ = require('jquery');
+import $ from 'jquery'
 
-exports.init = function() {
+export function init() {
     var titles = $('.content-area > .content > h2, h2.alice-module-title');
     var doc = $(document);
     if (titles.length <= 0) {
@@ -9,18 +9,18 @@ exports.init = function() {
 
     $(window).scroll(function() {
         var top = doc.scrollTop(), i;
-        if (top >= doc.height()- $(window).height() - 20) {
+        if (top >= doc.height() - $(window).height() - 20) {
             i = titles.length - 1;
         } else {
-            for (i=0; i<titles.length; i++) {
+            for (i = 0; i < titles.length; i++) {
                 if (top < titles.eq(i).offset().top - 20) {
                     break;
                 }
             }
             i--;
-            i = (i<0) ? 0 : i;
+            i = (i < 0) ? 0 : i;
         }
         $('.side-area .side-highlight').removeClass('side-highlight');
         $('.side-area > ul > li').eq(i).addClass('side-highlight');
     });
-};
+}

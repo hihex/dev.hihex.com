@@ -37,7 +37,7 @@ private static final long MERCHANT_ID = 1;
 void createOrderForLife() {
     final String orderCode = "L" + generateUniqueOrderId();
     final JSONObject extraData = new JSONObject("{\"type\":\"life\",\"amount\":1}");
-    final StringBuilder queryString = 
+    final StringBuilder queryString =
         PaymentOrderRequest.buildQueryString(/*merchantId*/ MERCHANT_ID,
                                              /*orderCode*/ orderCode,
                                              /*orderType*/ PaymentOrderRequest.Type.kProp,
@@ -49,7 +49,7 @@ void createOrderForLife() {
     // ↑ 应执行 `toupper(sha1(queryString + "&signSecret=" + SIGN_SECRET))`
     queryString.append("&signature=");
     queryString.append(signature);
-    
+
     // 发起支付的异步通信
     SbrcManager.instance.request(deviceId, new PaymentOrderRequest(queryString.toString()) {
         // 有最终结果时会呼叫 onResult()
