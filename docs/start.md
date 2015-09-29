@@ -8,7 +8,7 @@
 
 (如使用 Android Studio 毋须下载)
 
-[![download_sdk](../static/download-sdk.png)](http://dl.hihex.com/sdk/maven/hihex/sbrc/sbrc/1.6.3.1045/sbrc-1.6.3.1045.aar)
+[![download_sdk](../static/download-sdk.png)](http://dl.hihex.com/sdk/maven/hihex/sbrc/sbrc/1.6.8.1349/sbrc-1.6.8.1349.aar)
 
 ## SDK 环境要求
 
@@ -16,7 +16,7 @@
 |-------------:|-------------------------------------------------------------------|
 | Android 系统 | Android 4.1（API 15）或更高，使用 x86 或 ARMv7（不支持MIPS）      |
 | JDK 版本     | 不低于 1.6                                                        |
-| IDE          | Android Studio 1.3 beta 或更高、Eclipse Mars 及 ADT 23.0.6 或更高 |
+| IDE          | Android Studio 1.3 或更高、Eclipse Mars 及 ADT 23.0.6 或更高      |
 
 
 ## 接入 SDK
@@ -31,7 +31,7 @@
             }
         }
         dependencies {
-            compile 'hihex.sbrc:sbrc:1.6.3.+@aar'
+            compile 'hihex.sbrc:sbrc:1.6.8.+@aar'
         }
 
 2. 点击 “Sync Project with Gradle Files” 让项目与 Gradle 设置同步。
@@ -41,7 +41,7 @@
 > 亲，Google 已经宣布 [不再支持 Eclipse ADT 了](http://android-developers.blogspot.hk/2015/06/an-update-on-eclipse-android-developer.html)，我们也计划全面转向 Android Studio，请赶紧换 IDE 吧~
 
 1. 先安装 Python 3。
-2. [下载 SDK](http://dl.hihex.com/sdk/maven/hihex/sbrc/sbrc/1.6.3.1045/sbrc-1.6.3.1045.aar)
+2. [下载 SDK](http://dl.hihex.com/sdk/maven/hihex/sbrc/sbrc/1.6.8.1349/sbrc-1.6.8.1349.aar)
 3. 下载 `aar-to-eclipse`：
 
         curl -L -O https://github.com/hihex/aar-to-eclipse/raw/master/aar-to-eclipse.py
